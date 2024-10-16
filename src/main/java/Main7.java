@@ -7,19 +7,20 @@ public class Main7 {
     public static void main(String[] args) throws Exception {
         List<String> book = Files.readAllLines(
                 Paths.get(
-                        "C:\\Users\\ogar_m\\IdeaProjects\\Numbers\\src\\main\\resources\\data\\Война и мир, том 1.txt"));
+                        "C:\\Users\\ogar_m\\Downloads\\ParserBook-master (1)\\ParserBook-master\\src\\main\\resources\\data\\Война и мир, том 1.txt"));
         String fullText = String.valueOf(book);
-        String[] allChapters = fullText.split("\n");
+        //"(((I){1,3})\n+)|((IV)+\n+)|((V)+\n+)|((VI)+\n+)|((VII)+\n+)|((VIII)+\n+)|((IX)+\n+)|((IX)+\n+)"
+        String[] allChapters = fullText.split("new chapter");
+        System.out.print("Введите слово, а мы выведем в консоль кол-во его повторений в данной книге: ");
+        String inputWord = new Scanner(System.in).nextLine();
         for (String currentChapter : allChapters) {
-            System.out.println(findTermFrequency(currentChapter));
+            System.out.println(findTermFrequency(currentChapter, inputWord));
         }
 
     }
 
-    private static String findTermFrequency(String chapter) throws Exception {
+    private static String findTermFrequency(String chapter, String inputWord) throws Exception {
         List<String> chapterList = List.of(chapter);
-        System.out.print("Введите слово, а мы выведем в консоль кол-во его повторений в данной книге: ");
-        String inputWord = new Scanner(System.in).nextLine();
         int countAttempts = 0;
         int countWords = 0;
         double termFrequency = 0;
