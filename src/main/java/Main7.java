@@ -8,7 +8,10 @@ public class Main7 {
         List<String> book = Files.readAllLines(
                 Paths.get(
                         "C:\\Users\\ogar_m\\IdeaProjects\\Numbers\\src\\main\\resources\\data\\Война и мир, том 1.txt"));
+        System.out.println(findTermFrequency(book));
+    }
 
+    private static String findTermFrequency(List<String> book) throws Exception {
         System.out.print("Введите слово, а мы выведем в консоль кол-во его повторений в данной книге: ");
         String inputWord = new Scanner(System.in).nextLine();
         int countAttempts = 0;
@@ -29,10 +32,11 @@ public class Main7 {
         }
 
         termFrequency = (double)countAttempts / (double) countWords;
-        System.out.println(
-                "Кол-во повторений слова " + inputWord + " равно " + countAttempts +
+
+        String response = "Кол-во повторений слова " + inputWord + " равно " + countAttempts +
                 "\nКол-во слов в книге равно " + countWords +
-                "\nЧастота потребления слова " + inputWord + " в книге равна " + termFrequency
-        );
+                "\nЧастота потребления слова " + inputWord + " в книге равна " + termFrequency;
+        return response;
+
     }
 }
